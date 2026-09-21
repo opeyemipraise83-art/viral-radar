@@ -31,14 +31,13 @@
 
   .keybar{background:var(--panel);border:1px solid var(--line);border-radius:12px;
     padding:14px 16px;margin-bottom:16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
-  .keybar input{flex:1;min-width:220px;background:var(--bg);border:1px solid var(--line);
-    color:var(--ink);border-radius:8px;padding:10px 12px;font-size:14px;font-family:monospace;}
   .keybar .st{font-size:12px;padding:5px 10px;border-radius:20px;white-space:nowrap;}
   .st.demo{background:rgba(232,178,58,.14);color:var(--gold);border:1px solid rgba(232,178,58,.4);}
   .st.live{background:rgba(55,194,129,.14);color:var(--good);border:1px solid rgba(55,194,129,.4);}
   button{background:var(--red);color:#fff;border:0;border-radius:8px;padding:10px 16px;
     font-size:14px;font-weight:700;cursor:pointer;letter-spacing:.3px;}
   button.ghost{background:transparent;border:1px solid var(--line);color:var(--ink);font-weight:600;}
+  button.small{padding:7px 12px;font-size:12px;}
   button:hover{filter:brightness(1.08);}
 
   .controls{background:var(--panel);border:1px solid var(--line);border-radius:12px;
@@ -51,7 +50,7 @@
     padding:7px 13px;border-radius:20px;cursor:pointer;transition:.12s;}
   .niche:hover{border-color:var(--blue);color:var(--ink);}
   .niche.active{background:rgba(74,168,255,.16);border-color:var(--blue);color:#cfe6ff;}
-  .filters{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-end;}
+  .filters{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end;}
   .f{display:flex;flex-direction:column;gap:5px;}
   .f label{font-size:11px;color:var(--mute);letter-spacing:1px;text-transform:uppercase;}
   .f select,.f input[type=number]{background:var(--bg);border:1px solid var(--line);color:var(--ink);
@@ -61,6 +60,25 @@
     padding:6px 12px;border-radius:20px;cursor:pointer;}
   .chip:hover{border-color:var(--red);color:var(--ink);}
 
+  /* toolbar */
+  .toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:4px 0 14px;}
+  .toolbar .spacer{flex:1;}
+  .toggle{font-size:12px;background:var(--panel2);border:1px solid var(--line);color:var(--mute);
+    padding:8px 13px;border-radius:8px;cursor:pointer;font-weight:600;}
+  .toggle.on{background:rgba(224,50,46,.16);border-color:var(--red);color:#ffd9d8;}
+
+  /* collapsible panels */
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    padding:14px 16px;margin-bottom:16px;display:none;}
+  .panel.open{display:block;}
+  .panel h3{margin:0 0 8px;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);}
+  .pwords{display:flex;gap:7px;flex-wrap:wrap;}
+  .pword{font-size:12px;background:var(--panel2);border:1px solid var(--line);color:var(--ink);
+    padding:5px 11px;border-radius:20px;cursor:pointer;}
+  .pword:hover{border-color:var(--blue);}
+  .pword b{color:var(--blue);}
+  .pnote{font-size:11px;color:var(--mute);margin-top:10px;line-height:1.6;}
+
   .status{font-size:13px;color:var(--mute);margin:6px 2px 16px;min-height:18px;}
   .status b{color:var(--ink);}
   .err{color:var(--red);}
@@ -69,7 +87,7 @@
   .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;
     display:flex;flex-direction:column;transition:border-color .15s,transform .15s;}
   .card:hover{border-color:var(--red);transform:translateY(-2px);}
-  .thumb{position:relative;aspect-ratio:16/9;background:#000;overflow:hidden;}
+  .thumb{position:relative;aspect-ratio:16/9;background:#000;overflow:hidden;cursor:pointer;}
   .thumb img{width:100%;height:100%;object-fit:cover;display:block;}
   .badges{position:absolute;top:8px;left:8px;display:flex;gap:6px;flex-wrap:wrap;}
   .badge{font-size:10px;font-weight:800;letter-spacing:.5px;padding:4px 8px;border-radius:5px;
@@ -80,10 +98,15 @@
   .b-vpd{background:rgba(74,168,255,.92);color:#04121f;}
   .b-face{background:rgba(180,120,255,.92);color:#14061f;}
   .mult{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.78);color:#fff;
-    font-weight:800;font-size:15px;padding:4px 9px;border-radius:6px;border:1px solid var(--red);}
+    font-weight:800;font-size:15px;padding:4px 9px;border-radius:6px;border:1px solid var(--red);cursor:help;}
+  .star{position:absolute;top:8px;right:8px;width:30px;height:30px;border-radius:50%;
+    background:rgba(0,0,0,.6);border:1px solid var(--line);color:#fff;font-size:15px;
+    display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(4px);}
+  .star.on{color:var(--gold);border-color:var(--gold);}
   .body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:8px;flex:1;}
   .title{font-size:15px;font-weight:700;line-height:1.3;max-height:60px;overflow:hidden;}
-  .chan{font-size:12px;color:var(--mute);}
+  .chan{font-size:12px;color:var(--mute);cursor:pointer;}
+  .chan:hover{color:var(--blue);}
   .stats{display:grid;grid-template-columns:1fr 1fr;gap:6px 10px;margin-top:auto;font-size:12px;}
   .stat{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:6px;}
   .stat span{color:var(--mute);}
@@ -91,20 +114,74 @@
   .earn b{color:var(--good);}
   .vpd b{color:var(--blue);}
   .eng b{color:var(--gold);}
-  .foot{display:flex;justify-content:space-between;align-items:center;margin-top:4px;}
-  .watch{font-size:12px;font-weight:700;color:var(--red);}
+  .foot{display:flex;justify-content:space-between;align-items:center;margin-top:4px;gap:8px;flex-wrap:wrap;}
+  .watch{font-size:12px;font-weight:700;color:var(--red);cursor:pointer;}
+  .watch.mute{color:var(--mute);}
   .empty{text-align:center;color:var(--mute);padding:60px 20px;}
   .note{font-size:11px;color:var(--mute);margin-top:24px;line-height:1.6;border-top:1px solid var(--line);padding-top:16px;}
 
   .modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;
     justify-content:center;padding:20px;z-index:50;}
   .modal.open{display:flex;}
-  .sheet{background:var(--panel);border:1px solid var(--line);border-radius:14px;max-width:640px;
+  .sheet{background:var(--panel);border:1px solid var(--line);border-radius:14px;max-width:680px;
     width:100%;padding:26px;max-height:85vh;overflow:auto;}
   .sheet h2{margin:0 0 6px;color:var(--red);}
   .sheet ol{line-height:1.75;padding-left:20px;}
   .sheet code{background:var(--bg);padding:2px 6px;border-radius:4px;color:var(--gold);font-size:13px;}
   .sheet .close{margin-top:18px;}
+  /* channel deep-dive list */
+  .chrow{display:flex;gap:12px;align-items:center;padding:10px 0;border-top:1px solid var(--line);}
+  .chrow img{width:120px;aspect-ratio:16/9;object-fit:cover;border-radius:6px;flex:none;background:#000;}
+  .chrow .ct{flex:1;min-width:0;}
+  .chrow .ct .t{font-size:13px;font-weight:600;line-height:1.3;max-height:34px;overflow:hidden;}
+  .chrow .ct .m{font-size:11px;color:var(--mute);margin-top:4px;}
+  .chrow .cm{font-weight:800;font-size:14px;padding:3px 8px;border-radius:6px;border:1px solid var(--line);white-space:nowrap;}
+  .chsum{font-size:13px;color:var(--mute);margin:6px 0 14px;line-height:1.6;}
+  .chsum b{color:var(--ink);}
+  /* copy-format modal */
+  .fmt-head{display:flex;gap:14px;margin:4px 0 16px;}
+  .fmt-head img{width:160px;aspect-ratio:16/9;object-fit:cover;border-radius:8px;flex:none;background:#000;}
+  .fmt-head .ft{font-size:14px;font-weight:700;line-height:1.35;}
+  .fmt-head .fm{font-size:12px;color:var(--mute);margin-top:6px;line-height:1.6;}
+  .fsec{border-top:1px solid var(--line);padding:14px 0;}
+  .fsec h4{margin:0 0 8px;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);}
+  .fsec p{margin:0 0 8px;font-size:13px;line-height:1.6;color:var(--ink);}
+  .ftag{display:inline-block;font-size:11px;background:var(--panel2);border:1px solid var(--line);
+    color:var(--mute);padding:4px 9px;border-radius:14px;margin:0 5px 5px 0;}
+  .ftpl{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px 12px;
+    font-size:13px;color:var(--ink);margin:0 0 8px;display:flex;justify-content:space-between;gap:10px;align-items:center;}
+  .ftpl code{color:var(--gold);}
+  .ftpl button, .idea button, .ftbtn{background:var(--panel2);border:1px solid var(--line);color:var(--mute);
+    font-size:11px;font-weight:700;padding:5px 10px;border-radius:6px;flex:none;cursor:pointer;}
+  .ftpl button:hover, .idea button:hover, .ftbtn:hover{color:#fff;border-color:var(--red);}
+  .fmeta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px;}
+  .fmeta span{font-size:11px;background:var(--panel2);border:1px solid var(--line);
+    color:var(--ink);padding:5px 10px;border-radius:14px;}
+  .fmeta b{color:var(--gold);}
+  /* blueprint */
+  .bp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:10px 0 4px;}
+  .bp-card{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:12px 14px;}
+  .bp-card .k{font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.5px;}
+  .bp-card .val{font-size:18px;font-weight:800;color:var(--ink);margin-top:4px;}
+  .bp-card .val b{color:var(--gold);}
+  .bp-sub{font-size:12px;color:var(--mute);margin-top:3px;}
+  .idea{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:11px 13px;
+    margin-bottom:8px;display:flex;justify-content:space-between;gap:12px;align-items:center;}
+  .idea .it{font-size:14px;font-weight:600;color:var(--ink);line-height:1.4;}
+  .idea .iw{font-size:11px;color:var(--mute);margin-top:3px;}
+  .bp-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
+  .skeleton{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:12px 14px;
+    font-size:13px;line-height:1.7;color:var(--ink);white-space:pre-wrap;margin-top:8px;}
+  .twall{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-top:8px;}
+  .twall a{display:block;position:relative;border-radius:8px;overflow:hidden;border:1px solid var(--line);}
+  .twall img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;}
+  .twall .cap{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.85));
+    color:#fff;font-size:11px;font-weight:700;padding:14px 8px 6px;}
+  .hist{display:flex;gap:8px;flex-wrap:wrap;}
+  .hist .hchip{font-size:12px;background:var(--panel2);border:1px solid var(--line);color:var(--ink);
+    padding:6px 12px;border-radius:20px;cursor:pointer;}
+  .hist .hchip:hover{border-color:var(--red);}
+  .hist .hchip small{color:var(--mute);margin-left:6px;}
 </style>
 </head>
 <body>
@@ -144,7 +221,7 @@
   <!-- CONTROLS -->
   <div class="controls">
     <div class="searchrow">
-      <input id="q" placeholder="Type any niche or topic (e.g. air fryer recipes, budgeting tips, gym motivation)…"/>
+      <input id="q" placeholder="Type any niche or topic — or paste several separated by commas…"/>
       <button id="go">Scan</button>
     </div>
     <div class="nicherow" id="niches"></div>
@@ -158,6 +235,16 @@
           <option value="100000">Under 100k</option>
           <option value="500000">Under 500k</option>
           <option value="1000000">Under 1M</option>
+        </select>
+      </div>
+      <div class="f">
+        <label>Hide videos over</label>
+        <select id="maxViews">
+          <option value="0" selected>No cap</option>
+          <option value="5000000">5M views</option>
+          <option value="2000000">2M views</option>
+          <option value="1000000">1M views</option>
+          <option value="500000">500k views</option>
         </select>
       </div>
       <div class="f">
@@ -209,12 +296,50 @@
         </select>
       </div>
       <div class="f">
+        <label>Region</label>
+        <select id="region">
+          <option value="" selected>Worldwide</option>
+          <option value="US">United States</option>
+          <option value="GB">United Kingdom</option>
+          <option value="CA">Canada</option>
+          <option value="AU">Australia</option>
+          <option value="NG">Nigeria</option>
+          <option value="IN">India</option>
+        </select>
+      </div>
+      <div class="f">
+        <label>Language</label>
+        <select id="lang">
+          <option value="" selected>Any</option>
+          <option value="en">English</option>
+          <option value="es">Spanish</option>
+          <option value="pt">Portuguese</option>
+          <option value="hi">Hindi</option>
+        </select>
+      </div>
+      <div class="f">
         <label>Est. RPM ($)</label>
         <input id="rpm" type="number" value="4" min="0" step="0.5" style="width:90px;"/>
       </div>
     </div>
     <div class="chips" id="chips"></div>
   </div>
+
+  <!-- TOOLBAR -->
+  <div class="toolbar">
+    <div class="toggle" id="tgBlueprint">🏆 Winning Blueprint</div>
+    <div class="toggle" id="tgThumbs">🖼️ Thumbnail wall</div>
+    <div class="toggle" id="tgPatterns">🔤 Title patterns</div>
+    <div class="toggle" id="tgShortlist">⭐ Shortlist (<span id="savedCount">0</span>)</div>
+    <div class="toggle" id="tgHistory">🕘 History</div>
+    <div class="spacer"></div>
+    <button class="ghost small" id="exportCsv">⬇ Export CSV</button>
+  </div>
+
+  <div class="panel" id="patterns"><h3>Winning-title word patterns</h3><div class="pwords" id="pwords"></div><div class="pnote" id="pnote"></div></div>
+  <div class="panel" id="blueprint"></div>
+  <div class="panel" id="thumbwall"></div>
+  <div class="panel" id="history"></div>
 
   <div class="status" id="status"></div>
   <div class="grid" id="grid"></div>
@@ -246,19 +371,34 @@
   </div>
 </div>
 
+<!-- CHANNEL DEEP-DIVE MODAL -->
+<div class="modal" id="chModal">
+  <div class="sheet">
+    <h2 id="chTitle">Channel deep-dive</h2>
+    <div class="chsum" id="chSum">Loading…</div>
+    <div id="chList"></div>
+    <button class="close" id="chClose">Close</button>
+  </div>
+</div>
+
+<!-- COPY-FORMAT MODAL -->
+<div class="modal" id="fmtModal">
+  <div class="sheet">
+    <h2>📋 Copy this format</h2>
+    <div id="fmtBody"></div>
+    <button class="close" id="fmtClose">Close</button>
+  </div>
+</div>
+
 <script>
 /* ============================================================
    VIRAL RADAR — client-side YouTube outlier finder (any niche)
    All public data via official YouTube Data API v3.
-   No server. Your key is stored only in THIS browser.
+   No server. Your key(s) stored only in THIS browser.
    ============================================================ */
 
-/* Niche presets: each expands into a few strong seed queries */
 const BLOWING = "🔥 Blowing up now";
 
-/* Faceless-format seeds that span MANY niches — sampled randomly each
-   visit so the "blowing up now" feed feels fresh every time. These are
-   formats that faceless channels dominate (no on-camera presenter). */
 const FACELESS_SEEDS = [
   "top 10 facts","scary stories","history explained","psychology facts",
   "how to make money online","space documentary","reddit stories",
@@ -267,42 +407,34 @@ const FACELESS_SEEDS = [
   "ai tools explained","survival story","geography facts","animated story",
   "biography documentary","weird history","tech explained","ranked tier list"
 ];
-
-/* words that suggest an ON-CAMERA / face channel — these EXCLUDE a video */
 const FACELESS_NEG = ["my face","face reveal","q&a","q & a","grwm","get ready with me",
   "haul","room tour","apartment tour","house tour of my","a day in my life","day in the life",
   "vlog","my apartment","meet my","story time with","talking to camera","reacting to",
   "i tried","i spent","i bought","chit chat","catch up with me","update video","morning routine vlog"];
-
-/* strong POSITIVE faceless-format signals (title/description) */
 const FACELESS_POS = ["top ","facts","explained","story","stories","documentary",
   "compilation","timeline","history","ranked","tier list","how it","what happened",
   "why ","reddit","scary","mystery","case","asmr","satisfying","iceberg","animated",
   "narrat","biography","survival","the truth about","the rise of","the story of","vs ",
   "explained simply","in minutes","countdown","list of"];
 
+const STOPWORDS = new Set(("the a an of to in on for and or but with without you your my his her their "+
+  "this that it is was were are be i he she they we how why what when who where which "+
+  "video part full about from into out over under after before best most your").split(/\s+/));
+
 function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
 
-/* Faceless detection — API can't see faces, so we infer from signals:
-   1) if the title clearly screams ON-CAMERA  -> NOT faceless (exclude)
-   2) otherwise treat as faceless (benefit of the doubt), because
-      (a) plain titles are common on real faceless channels, and
-      (b) our search seeds are already faceless-format.
-   `strong` = we have positive evidence (keyword / number / faceless seed),
-   used only for the purple "Faceless" badge, not for filtering. */
 function facelessInfo(v){
   const t = ((v.title||'')+' '+(v.desc||'')).toLowerCase();
   if(FACELESS_NEG.some(w=>t.includes(w))) return {faceless:false, strong:false};
   let pos = FACELESS_POS.reduce((n,w)=> n + (t.includes(w)?1:0), 0);
-  if(/\b\d+\b/.test(v.title||'')) pos++;      // "Top 5", "10 facts" etc.
-  if(v.seedFaceless) pos++;                    // found via a faceless-format search
+  if(/\b\d+\b/.test(v.title||'')) pos++;
+  if(v.seedFaceless) pos++;
   return {faceless:true, strong: pos>=1};
 }
-function isFaceless(v){ return facelessInfo(v).faceless; }
 
 const NICHES = {
-  "🔥 Blowing up now": [],  /* special: sampled faceless seeds across niches */
-  "Trending now":   ["","",""],  /* blank = broad most-viewed recent */
+  "🔥 Blowing up now": [],
+  "Trending now":   ["","",""],
   "Finance/Money":  ["how to save money","budgeting tips","side hustle ideas","passive income"],
   "Tech/AI":        ["ai tools","chatgpt tutorial","best gadgets","tech review"],
   "Food/Cooking":   ["easy recipes","air fryer recipes","meal prep","viral recipe"],
@@ -331,11 +463,7 @@ const NICHES = {
 
 const $ = id => document.getElementById(id);
 
-/* ---------- MULTI-KEY ROTATION ----------
-   Keys are stored (one per line) in localStorage 'vr_keys'.
-   We start at the first key; whenever a key returns a
-   quota/rate error we transparently advance to the next one
-   and retry. When all keys are exhausted we tell the user. */
+/* ---------- MULTI-KEY ROTATION ---------- */
 function loadKeys(){
   const raw = localStorage.getItem('vr_keys') || localStorage.getItem('vr_key') || '';
   return raw.split(/[\n,]/).map(s=>s.trim()).filter(Boolean);
@@ -353,28 +481,43 @@ function isQuotaErr(msg){
          msg.includes('daily limit') || msg.includes('rate') ||
          msg.includes('dailylimit') || msg.includes('userratelimit');
 }
-/* advance to next key; returns false if none left */
-function nextKey(){
-  if(keyIdx < KEYS.length-1){ keyIdx++; updateKeyInfo(); return true; }
-  return false;
-}
+function nextKey(){ if(keyIdx < KEYS.length-1){ keyIdx++; updateKeyInfo(); return true; } return false; }
 function updateKeyInfo(){
   const el=$('keyinfo');
   if(!hasKeys()){ el.style.display='none'; return; }
   el.style.display='';
-  el.textContent = KEYS.length>1
-    ? `Key ${keyIdx+1} of ${KEYS.length}`
-    : `1 key loaded`;
+  el.textContent = KEYS.length>1 ? `Key ${keyIdx+1} of ${KEYS.length}` : `1 key loaded`;
+}
+
+/* ---------- shortlist + history stores ---------- */
+let SAVED = JSON.parse(localStorage.getItem('vr_saved')||'{}');
+let showSaved = false;
+function saveShortlist(){ localStorage.setItem('vr_saved', JSON.stringify(SAVED)); $('savedCount').textContent = Object.keys(SAVED).length; }
+function toggleSave(v){
+  if(SAVED[v.id]) delete SAVED[v.id];
+  else SAVED[v.id] = {id:v.id,title:v.title,channel:v.channel,channelId:v.channelId,desc:v.desc,
+    thumb:v.thumb,views:v.views,subs:v.subs,avg:v.avg,mult:v.mult,likes:v.likes,
+    comments:v.comments,duration:v.duration,tags:v.tags,published:v.published,seedFaceless:v.seedFaceless};
+  saveShortlist(); render();
+}
+let HIST = JSON.parse(localStorage.getItem('vr_hist')||'[]');
+function recordHistory(label){
+  if(!label) return;
+  HIST = HIST.filter(h=>h.q!==label);
+  HIST.unshift({q:label, t:Date.now()});
+  HIST = HIST.slice(0,20);
+  localStorage.setItem('vr_hist', JSON.stringify(HIST));
 }
 
 function boot(){
   if(hasKeys()){ $('apikeys').value = KEYS.join('\n'); setMode(true); }
   else setMode(false);
   updateKeyInfo();
+  $('savedCount').textContent = Object.keys(SAVED).length;
   renderNiches();
   renderChips();
   bindEvents();
-  runScan(''); // auto-load on open
+  runScan('');
 }
 
 function setMode(live){
@@ -385,26 +528,53 @@ function setMode(live){
 
 function bindEvents(){
   $('saveKey').onclick = ()=>{
-    const raw = $('apikeys').value;
-    localStorage.setItem('vr_keys', raw);
+    localStorage.setItem('vr_keys', $('apikeys').value);
     localStorage.removeItem('vr_key');
     KEYS = loadKeys(); keyIdx = 0;
     setMode(hasKeys()); updateKeyInfo();
-    $('status').innerHTML = hasKeys()
-      ? `Saved <b>${KEYS.length}</b> key(s). Running a live scan…`
-      : 'Keys cleared — back to demo.';
+    $('status').innerHTML = hasKeys() ? `Saved <b>${KEYS.length}</b> key(s). Running a live scan…` : 'Keys cleared — back to demo.';
     runScan($('q').value.trim());
   };
   $('go').onclick = ()=> runScan($('q').value.trim());
   $('q').addEventListener('keydown', e=>{ if(e.key==='Enter') runScan($('q').value.trim()); });
-  ['maxSubs','within','minMult','sort','rpm','faceless'].forEach(id=>{
+  ['maxSubs','maxViews','within','minMult','sort','rpm','faceless'].forEach(id=>{
     $(id).addEventListener('change', ()=> render());
   });
-  // length changes the actual query → re-scan
-  $('dur').addEventListener('change', ()=> runScan($('q').value.trim()));
+  ['dur','region','lang'].forEach(id=>{
+    $(id).addEventListener('change', ()=> runScan($('q').value.trim()));
+  });
   $('howto').onclick = ()=> $('modal').classList.add('open');
   $('closeModal').onclick = ()=> $('modal').classList.remove('open');
   $('modal').onclick = e=>{ if(e.target===$('modal')) $('modal').classList.remove('open'); };
+  $('chClose').onclick = ()=> $('chModal').classList.remove('open');
+  $('chModal').onclick = e=>{ if(e.target===$('chModal')) $('chModal').classList.remove('open'); };
+  $('fmtClose').onclick = ()=> $('fmtModal').classList.remove('open');
+  $('fmtModal').onclick = e=>{ if(e.target===$('fmtModal')) $('fmtModal').classList.remove('open'); };
+
+  const panel = (tgId, panelId, drawFn)=>{
+    $(tgId).onclick = ()=>{
+      const p=$(panelId), open=!p.classList.contains('open');
+      ['patterns','blueprint','thumbwall','history'].forEach(x=>{ if(x!==panelId) $(x).classList.remove('open'); });
+      ['tgPatterns','tgBlueprint','tgThumbs','tgHistory'].forEach(x=>{ if(x!==tgId) $(x).classList.remove('on'); });
+      p.classList.toggle('open', open);
+      $(tgId).classList.toggle('on', open);
+      if(open) drawFn();
+    };
+  };
+  panel('tgBlueprint','blueprint', drawBlueprint);
+  panel('tgThumbs','thumbwall', drawThumbWall);
+  panel('tgPatterns','patterns', drawPatterns);
+  panel('tgHistory','history', drawHistory);
+
+  $('tgShortlist').onclick = ()=>{
+    showSaved = !showSaved;
+    $('tgShortlist').classList.toggle('on', showSaved);
+    render();
+    if($('blueprint').classList.contains('open')) drawBlueprint();
+    if($('thumbwall').classList.contains('open')) drawThumbWall();
+    if($('patterns').classList.contains('open')) drawPatterns();
+  };
+  $('exportCsv').onclick = exportCsv;
 }
 
 function renderNiches(){
@@ -421,17 +591,14 @@ function renderNiches(){
   });
 }
 
-function currentSeeds(){
-  const seeds = NICHES[activeNiche] || [""];
-  return seeds;
-}
+function currentSeeds(){ return NICHES[activeNiche] || [""]; }
 
 function renderChips(){
   const seeds = currentSeeds().filter(Boolean);
   if(!seeds.length){ $('chips').innerHTML =
     '<span style="font-size:12px;color:var(--mute)">Broad scan — most-viewed recent uploads. Pick a niche above or type a topic.</span>'; return; }
   $('chips').innerHTML = seeds.map(k=>`<span class="chip" data-k="${k}">${k}</span>`).join('');
-  document.querySelectorAll('.chip').forEach(c=>{
+  document.querySelectorAll('#chips .chip').forEach(c=>{
     c.onclick = ()=>{ $('q').value=c.dataset.k; runScan(c.dataset.k); };
   });
 }
@@ -448,15 +615,15 @@ async function runScan(keyword){
   if(!hasKeys()){ RAW = DEMO_DATA(); $('status').innerHTML =
     '<b>Demo data shown.</b> Paste one or more free API keys above to scan live YouTube.'; render(); return; }
 
-  // build the queries: typed keyword wins; else the niche's seeds.
   let kws;
   if(keyword){ kws = keyword.split(',').map(s=>s.trim()).filter(Boolean).slice(0,4); }
-  else if(activeNiche === BLOWING){ kws = shuffle(FACELESS_SEEDS).slice(0,4); } // random cross-niche sample each visit
+  else if(activeNiche === BLOWING){ kws = shuffle(FACELESS_SEEDS).slice(0,4); }
   else { kws = currentSeeds().slice(0,3); }
 
   const label = keyword ? keyword
     : (activeNiche===BLOWING ? "faceless videos blowing up across every niche"
     : (activeNiche==="Trending now" ? "trending / most-viewed recent" : activeNiche));
+  recordHistory(keyword ? keyword : activeNiche);
   $('status').innerHTML = `Scanning YouTube — <b>${label}</b>…`;
   $('grid').innerHTML='';
   try{
@@ -466,6 +633,9 @@ async function runScan(keyword){
     const seen={}; RAW = vids.filter(v=>!seen[v.id] && (seen[v.id]=1));
     $('status').innerHTML = `Found <b>${RAW.length}</b> videos. Filtering…`;
     render();
+    if($('patterns').classList.contains('open')) drawPatterns();
+    if($('blueprint').classList.contains('open')) drawBlueprint();
+    if($('thumbwall').classList.contains('open')) drawThumbWall();
   }catch(err){
     if(err.allKeysDone){
       $('status').innerHTML = `<span class="err">All ${KEYS.length} key(s) have hit their daily limit.</span> `+
@@ -476,19 +646,16 @@ async function runScan(keyword){
   }
 }
 
-/* fetch JSON on the CURRENT key; on a quota error, roll to the
-   next key and retry, until keys run out. `cost` = quota units. */
 async function apiGet(path, params, cost){
   while(true){
     params.set('key', curKey());
-    const j = await fetch('https://www.googleapis.com/youtube/v3/'+path+'?'+params)
-                .then(r=>r.json());
+    const j = await fetch('https://www.googleapis.com/youtube/v3/'+path+'?'+params).then(r=>r.json());
     updateQuota(cost);
     if(j.error){
       if(isQuotaErr(j.error.message)){
         if(nextKey()){
           $('status').innerHTML = `Key limit reached — switching to key <b>${keyIdx+1}</b> of ${KEYS.length}…`;
-          continue; // retry same request on next key
+          continue;
         }
         const e = new Error('all keys exhausted'); e.allKeysDone = true; throw e;
       }
@@ -498,15 +665,48 @@ async function apiGet(path, params, cost){
   }
 }
 
+function isoToSec(iso){
+  const m=(iso||'').match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
+  if(!m) return 0;
+  return (+m[1]||0)*3600 + (+m[2]||0)*60 + (+m[3]||0);
+}
+function fmtDur(s){
+  if(!s) return '—';
+  const h=Math.floor(s/3600), m=Math.floor(s%3600/60), sec=s%60;
+  return h? `${h}:${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}` : `${m}:${String(sec).padStart(2,'0')}`;
+}
+
+function mapVideo(v, ch, seedFaceless){
+  const c = ch[v.snippet.channelId]||{statistics:{}};
+  const subs = +(c.statistics.subscriberCount||0);
+  const chViews = +(c.statistics.viewCount||0);
+  const chVideos = +(c.statistics.videoCount||1);
+  const avg = Math.max(1, Math.round(chViews/chVideos));
+  const views = +(v.statistics.viewCount||0);
+  return {
+    id:v.id, title:v.snippet.title, channel:v.snippet.channelTitle,
+    channelId:v.snippet.channelId, desc:(v.snippet.description||'').slice(0,200),
+    thumb:(v.snippet.thumbnails.high||v.snippet.thumbnails.medium||v.snippet.thumbnails.default).url,
+    views, subs, avg, mult:+(views/avg).toFixed(1),
+    likes:+(v.statistics.likeCount||0),
+    comments:+(v.statistics.commentCount||0),
+    duration: v.contentDetails ? isoToSec(v.contentDetails.duration) : 0,
+    tags: (v.snippet.tags||[]).slice(0,12),
+    published:v.snippet.publishedAt, seedFaceless:!!seedFaceless
+  };
+}
+
 async function searchKeyword(kw, seedFaceless){
   const within = +$('within').value;
   const dur = $('dur').value;
-  const p = new URLSearchParams({part:'snippet',type:'video',order:'viewCount',
-    maxResults:'25'});
-  if(kw) p.set('q', kw);
-  else p.set('q', ''); // broad
+  const region = $('region').value;
+  const lang = $('lang').value;
+  const p = new URLSearchParams({part:'snippet',type:'video',order:'viewCount',maxResults:'25'});
+  p.set('q', kw||'');
   if(within>0) p.set('publishedAfter', new Date(Date.now()-within*864e5).toISOString());
   if(dur!=='any') p.set('videoDuration', dur);
+  if(region) p.set('regionCode', region);
+  if(lang) p.set('relevanceLanguage', lang);
   const sr = await apiGet('search', p, 100);
   const vidIds = (sr.items||[]).map(i=>i.id.videoId).filter(Boolean);
   if(!vidIds.length) return [];
@@ -519,49 +719,79 @@ async function searchKeyword(kw, seedFaceless){
     {part:'statistics,snippet',id:chIds.join(',')}), 1);
   const ch={}; (cr.items||[]).forEach(c=>ch[c.id]=c);
 
-  return vr.items.map(v=>{
-    const c = ch[v.snippet.channelId]||{statistics:{}};
-    const subs = +(c.statistics.subscriberCount||0);
-    const chViews = +(c.statistics.viewCount||0);
-    const chVideos = +(c.statistics.videoCount||1);
-    const avg = Math.max(1, Math.round(chViews/chVideos));
-    const views = +(v.statistics.viewCount||0);
-    return {
-      id:v.id, title:v.snippet.title, channel:v.snippet.channelTitle,
-      desc:(v.snippet.description||'').slice(0,200),
-      thumb:(v.snippet.thumbnails.medium||v.snippet.thumbnails.default).url,
-      views, subs, avg, mult:+(views/avg).toFixed(1),
-      likes:+(v.statistics.likeCount||0),
-      comments:+(v.statistics.commentCount||0),
-      published:v.snippet.publishedAt,
-      seedFaceless:!!seedFaceless
-    };
-  });
+  return vr.items.map(v=>mapVideo(v, ch, seedFaceless));
 }
 
+/* ---------- more like this ---------- */
+function moreLikeThis(title){
+  const words = title.toLowerCase().replace(/[^a-z0-9\s]/g,' ').split(/\s+/)
+    .filter(w=>w.length>3 && !STOPWORDS.has(w));
+  const q = words.slice(0,4).join(' ');
+  $('q').value = q; runScan(q);
+}
+
+/* ---------- channel deep-dive ---------- */
+async function channelDeepDive(channelId, channelName){
+  $('chTitle').textContent = channelName;
+  $('chSum').textContent = 'Loading recent uploads…';
+  $('chList').innerHTML = '';
+  $('chModal').classList.add('open');
+  if(!hasKeys()){ $('chSum').innerHTML = 'Channel deep-dive needs a live API key. Paste one up top to use this.'; return; }
+  try{
+    const sr = await apiGet('search', new URLSearchParams(
+      {part:'snippet',type:'video',channelId,order:'viewCount',maxResults:'25'}), 100);
+    const ids = (sr.items||[]).map(i=>i.id.videoId).filter(Boolean);
+    if(!ids.length){ $('chSum').textContent = 'No videos found for this channel.'; return; }
+    const vr = await apiGet('videos', new URLSearchParams(
+      {part:'statistics,snippet,contentDetails',id:ids.join(',')}), 1);
+    const cr = await apiGet('channels', new URLSearchParams(
+      {part:'statistics,snippet',id:channelId}), 1);
+    const ch={}; (cr.items||[]).forEach(c=>ch[c.id]=c);
+    const rows = vr.items.map(v=>mapVideo(v, ch));
+    const avg = rows.length ? Math.round(rows.reduce((s,r)=>s+r.views,0)/rows.length) : 0;
+    const subs = rows[0]?rows[0].subs:0;
+    rows.sort((a,b)=>b.views-a.views);
+    $('chSum').innerHTML = `<b>${fmt(subs)}</b> subs · top <b>${rows.length}</b> uploads · these average <b>${fmt(avg)}</b> views. `+
+      `Videos beating that average are this channel's proven winners — study their <b>title + thumbnail</b>.`;
+    $('chList').innerHTML = rows.map(v=>{
+      const beat = v.views>=avg*1.5, col = beat?'var(--red)':'var(--line)';
+      return `<div class="chrow"><img src="${v.thumb}" alt=""/>
+        <div class="ct"><div class="t">${esc(v.title)}</div>
+          <div class="m">${fmt(v.views)} views · ${daysAgo(v.published)}d ago · ${fmt(v.likes)} likes</div></div>
+        <div class="cm" style="border-color:${col};color:${beat?'#ffd9d8':'var(--mute)'}">${(v.views/Math.max(1,avg)).toFixed(1)}×</div></div>`;
+    }).join('');
+  }catch(err){
+    $('chSum').innerHTML = err.allKeysDone ? 'All keys hit their daily limit — try again tomorrow or add another key.' : `<span class="err">Error: ${esc(err.message)}</span>`;
+  }
+}
+
+/* ---------- rows ---------- */
+function computeRow(v){
+  const days = Math.max(0, Math.floor((Date.now() - new Date(v.published))/864e5));
+  const rpm = +$('rpm').value;
+  const vpd = Math.round(v.views/Math.max(1,days||1));
+  const earn = Math.round(v.views/1000*rpm);
+  const eng = v.views>0 ? +(((v.likes+(v.comments||0))/v.views)*100).toFixed(1) : 0;
+  const fi = facelessInfo(v);
+  return {...v, days, vpd, earn, eng, faceless:fi.faceless, facelessStrong:fi.strong};
+}
+function currentRows(){ return (showSaved?Object.values(SAVED):RAW).map(computeRow); }
+
 function render(){
-  const maxSubs=+$('maxSubs').value, within=+$('within').value,
-        minMult=+$('minMult').value, sort=$('sort').value, rpm=+$('rpm').value,
-        facelessOnly=$('faceless').value==='1';
-  const now=Date.now();
+  const maxSubs=+$('maxSubs').value, maxViews=+$('maxViews').value, within=+$('within').value,
+        minMult=+$('minMult').value, sort=$('sort').value, facelessOnly=$('faceless').value==='1';
 
-  let rows = RAW.map(v=>{
-    const days = Math.max(0, Math.floor((now - new Date(v.published))/864e5));
-    const vpd = Math.round(v.views/Math.max(1,days||1));
-    const earn = Math.round(v.views/1000*rpm);
-    const eng = v.views>0 ? +(((v.likes+ (v.comments||0))/v.views)*100).toFixed(1) : 0;
-    const fi = facelessInfo(v);
-    return {...v, days, vpd, earn, eng, faceless:fi.faceless, facelessStrong:fi.strong};
-  });
-
-  rows = rows.filter(v=>{
-    if(facelessOnly && !v.faceless) return false;
-    if(maxSubs>0 && v.subs>maxSubs) return false;
-    if(within>0 && v.days>within) return false;
-    if(v.mult<minMult) return false;
-    return true;
-  });
-
+  let rows = currentRows();
+  if(!showSaved){
+    rows = rows.filter(v=>{
+      if(facelessOnly && !v.faceless) return false;
+      if(maxSubs>0 && v.subs>maxSubs) return false;
+      if(maxViews>0 && v.views>maxViews) return false;
+      if(within>0 && v.days>within) return false;
+      if(v.mult<minMult) return false;
+      return true;
+    });
+  }
   rows.sort((a,b)=>{
     if(sort==='views') return b.views-a.views;
     if(sort==='recent') return a.days-b.days;
@@ -570,33 +800,33 @@ function render(){
     if(sort==='eng') return b.eng-a.eng;
     return b.mult-a.mult;
   });
-
   drawStatus(rows.length);
   drawGrid(rows);
 }
 
 function drawStatus(n){
   const live = hasKeys();
+  if(showSaved){ $('status').innerHTML = `Showing your <b>${n}</b> shortlisted video(s) · click ⭐ Shortlist again to return to results.`; return; }
   const blowing = activeNiche===BLOWING && !$('q').value.trim();
-  $('status').innerHTML = `Showing <b>${n}</b> `+
-    (blowing?'faceless video(s) blowing up right now':'outlier video(s)')+' · '+
+  $('status').innerHTML = `Showing <b>${n}</b> `+(blowing?'faceless video(s) blowing up right now':'outlier video(s)')+' · '+
     (live?'<span style="color:var(--good)">LIVE data</span>':'<span style="color:var(--gold)">demo data</span>')+
-    ' · adjust the filters — refiltering is free (no API cost).'+
+    ' · refiltering is free (no API cost).'+
     (blowing?' · <a href="#" id="reshuffle" style="color:var(--blue)">↻ shuffle new niches</a>':'');
   const rs=$('reshuffle'); if(rs) rs.onclick=(e)=>{ e.preventDefault(); runScan(''); };
 }
 
 function fmt(n){ if(n>=1e6) return (n/1e6).toFixed(1)+'M'; if(n>=1e3) return (n/1e3).toFixed(1)+'k'; return n; }
+function daysAgo(p){ return Math.max(0, Math.floor((Date.now()-new Date(p))/864e5)); }
+function esc(s){ return (s||'').replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function outlierTip(v){ return `${fmt(v.views)} views while the channel averages ${fmt(v.avg)} — that's ${v.mult}× normal. High multiples = real demand you can copy.`; }
 
 function drawGrid(rows){
   if(!rows.length){ $('grid').innerHTML =
-    '<div class="empty">No videos match these filters. Try switching “Channel type” to <b>All channels</b>, loosening “Max subscribers”/“Min outlier”, or widening “Published within”.</div>';
+    '<div class="empty">'+(showSaved?'Your shortlist is empty. Tap the ⭐ on any video to save it here.'
+      :'No videos match these filters. Try “All channels”, loosening “Max subscribers”/“Min outlier”, or widening “Published within”.')+'</div>';
     return; }
   $('grid').innerHTML = rows.map(v=>{
-    const small = v.subs>0 && v.subs<=50000;
-    const fresh = v.days<=7;
-    const hot = v.mult>=5;
-    const fastVpd = v.vpd>=50000;
+    const small = v.subs>0 && v.subs<=50000, fresh = v.days<=7, hot = v.mult>=5, fastVpd = v.vpd>=50000;
     const badges = [
       hot?'<span class="badge b-out">Outlier</span>':'',
       v.facelessStrong?'<span class="badge b-face">Faceless</span>':'',
@@ -604,16 +834,18 @@ function drawGrid(rows){
       fresh?'<span class="badge b-fresh">Fresh</span>':'',
       fastVpd?'<span class="badge b-vpd">Fast</span>':''
     ].join('');
+    const starred = !!SAVED[v.id];
     return `
     <div class="card">
-      <div class="thumb">
+      <div class="thumb" data-ch="${v.channelId}" data-chn="${esc(v.channel)}">
         <img src="${v.thumb}" alt="" loading="lazy"/>
         <div class="badges">${badges}</div>
-        <div class="mult">${v.mult}×</div>
+        <div class="star ${starred?'on':''}" data-star="${v.id}" title="Shortlist this">${starred?'★':'☆'}</div>
+        <div class="mult" title="${esc(outlierTip(v))}">${v.mult}×</div>
       </div>
       <div class="body">
-        <div class="title">${v.title}</div>
-        <div class="chan">${v.channel} · ${fmt(v.subs)} subs</div>
+        <div class="title">${esc(v.title)}</div>
+        <div class="chan" data-ch="${v.channelId}" data-chn="${esc(v.channel)}" title="Deep-dive this channel">${esc(v.channel)} · ${fmt(v.subs)} subs ▸</div>
         <div class="stats">
           <div class="stat"><span>Views</span><b>${fmt(v.views)}</b></div>
           <div class="stat"><span>Ch. avg</span><b>${fmt(v.avg)}</b></div>
@@ -626,27 +858,276 @@ function drawGrid(rows){
         </div>
         <div class="foot">
           <a class="watch" href="https://youtube.com/watch?v=${v.id}" target="_blank">Watch ▸</a>
-          <a class="watch" style="color:var(--mute)" href="https://youtube.com/watch?v=${v.id}" target="_blank">study format</a>
+          <span class="watch" data-fmt="${v.id}" style="color:var(--gold)">📋 Copy format ▸</span>
+          <span class="watch mute" data-more="${esc(v.title)}">more like this ▸</span>
         </div>
       </div>
     </div>`;
   }).join('');
+
+  document.querySelectorAll('[data-star]').forEach(el=>{
+    el.onclick = e=>{ e.stopPropagation();
+      const v = currentRows().find(x=>x.id===el.dataset.star); if(v) toggleSave(v); };
+  });
+  document.querySelectorAll('[data-ch]').forEach(el=>{ el.onclick = ()=> channelDeepDive(el.dataset.ch, el.dataset.chn); });
+  document.querySelectorAll('[data-more]').forEach(el=>{ el.onclick = ()=> moreLikeThis(el.dataset.more); });
+  document.querySelectorAll('[data-fmt]').forEach(el=>{
+    el.onclick = ()=>{ const v = currentRows().find(x=>x.id===el.dataset.fmt); if(v) openFormat(v); };
+  });
+}
+
+/* ============================================================
+   COPY THIS FORMAT
+   ============================================================ */
+function titleFormula(title){
+  const t=title, low=t.toLowerCase(), patterns=[];
+  const numMatch = t.match(/\b(\d+)\b/);
+  if(/^\s*\d+\s/.test(t) || /\btop\s*\d+/i.test(t)) patterns.push({name:'Listicle / countdown', tpl:`${numMatch?numMatch[1]:'7'} [things] about [TOPIC]`});
+  if(/[:|\-–—]/.test(t)) patterns.push({name:'Two-part hook (setup : payoff)', tpl:`[Intriguing setup] — [payoff]`});
+  if(/^(the|a|an)\s/i.test(t) && /(that|who|nobody|no one|everyone)/i.test(low)) patterns.push({name:'"The X that Y" curiosity gap', tpl:`The [thing] that [surprising outcome]`});
+  if(/^how\b/i.test(low)) patterns.push({name:'How-to / how-it-happened', tpl:`How [subject] [did the thing]`});
+  if(/^why\b/i.test(low)) patterns.push({name:'Why-question hook', tpl:`Why [subject] [unexpected fact]`});
+  if(/\b(explained|explain|guide|beginners)\b/i.test(low)) patterns.push({name:'Explainer / guide', tpl:`[Topic] explained (in [N] minutes)`});
+  if(/\b(vs|versus)\b/i.test(low)) patterns.push({name:'Versus / comparison', tpl:`[A] vs [B]: which is better?`});
+  if(/\b(mistake|wrong|stop|avoid|never)\b/i.test(low)) patterns.push({name:'Mistake / warning hook', tpl:`[N] [topic] mistakes everyone makes`});
+  if(!patterns.length) patterns.push({name:'Plain declarative', tpl:`[Strong phrase about your TOPIC]`});
+  return patterns;
+}
+function titleTemplates(title){
+  let base = title.replace(/\b\d{4}\b/g,'[YEAR]').replace(/\b\d+\b/g,'[N]');
+  const rebuilt = base.split(' ').map((w,i)=>{
+    if(i>0 && /^[A-Z][a-z]{2,}/.test(w) && !STOPWORDS.has(w.toLowerCase())) return '[NAME/THING]';
+    return w;
+  });
+  const t1 = rebuilt.join(' ');
+  const kw = title.toLowerCase().replace(/[^a-z0-9\s]/g,' ').split(/\s+/).filter(w=>w.length>3 && !STOPWORDS.has(w)).slice(0,3);
+  const t2 = kw.length? `The [${kw[0]}] [${kw[1]||'trick'}] nobody talks about` : 'The [angle] nobody talks about';
+  return [...new Set([t1, t2])];
+}
+function durationBucket(sec){
+  if(!sec) return {label:'Unknown length', tip:'Match a typical length for the niche.'};
+  if(sec<240) return {label:'Short (<4 min)', tip:'Fast, punchy, Shorts-adjacent. Hook in the first 3 seconds.'};
+  if(sec<1200) return {label:'Standard (4–20 min)', tip:'The YouTube sweet spot — full story + mid-roll ads.'};
+  if(sec<2400) return {label:'Long (20–40 min)', tip:'Deep-dive. Strong for watch-time & multiple ad breaks.'};
+  return {label:'Epic (40 min+)', tip:'Compilation / multi-part. Great retention if it sustains.'};
+}
+function openFormat(v){
+  const forms=titleFormula(v.title), tpls=titleTemplates(v.title), dur=durationBucket(v.duration);
+  const capsWords=(v.title.match(/\b[A-Z]{2,}\b/g)||[]).length, hasNumber=/\d/.test(v.title);
+  const hasEmoji=/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}]/u.test(v.title), titleLen=v.title.length;
+  const copyBtn=(txt)=>`<button onclick="navigator.clipboard&&navigator.clipboard.writeText(this.dataset.c);this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1200)" data-c="${esc(txt)}">Copy</button>`;
+  $('fmtBody').innerHTML = `
+    <div class="fmt-head">
+      <img src="${v.thumb}" alt=""/>
+      <div><div class="ft">${esc(v.title)}</div>
+        <div class="fm">${esc(v.channel)} · ${fmt(v.subs)} subs · <b style="color:var(--red)">${v.mult}× outlier</b><br>
+        ${fmt(v.views)} views · ${fmt(v.vpd)}/day · ${v.eng}% engagement · ${v.days}d old ${v.facelessStrong?'· 🤖 faceless':''}</div></div>
+    </div>
+    <div class="fsec"><h4>Why this worked (the proof)</h4>
+      <p>This video pulled <b>${v.mult}×</b> the channel's normal views — a format the audience clearly wanted.
+      On a ${fmt(v.subs)}-sub channel that means the <b>topic + packaging</b> did the work, and you can copy the packaging.</p></div>
+    <div class="fsec"><h4>Title formula it uses</h4>
+      ${forms.map(f=>`<p>• <b>${f.name}</b><br><span style="color:var(--mute)">Pattern:</span> <code>${esc(f.tpl)}</code></p>`).join('')}</div>
+    <div class="fsec"><h4>Steal-it title templates (swap the [brackets])</h4>
+      ${tpls.map(t=>`<div class="ftpl"><code>${esc(t)}</code>${copyBtn(t)}</div>`).join('')}</div>
+    <div class="fsec"><h4>Packaging checklist</h4>
+      <div class="fmeta">
+        <span>Title length: <b>${titleLen}</b> chars ${titleLen<=60?'✅':'(trim toward ≤60)'}</span>
+        <span>Number in title: <b>${hasNumber?'Yes ✅':'No'}</b></span>
+        <span>ALL-CAPS word: <b>${capsWords?'Yes ('+capsWords+') ✅':'No'}</b></span>
+        <span>Emoji: <b>${hasEmoji?'Yes':'No'}</b></span>
+      </div>
+      <p style="color:var(--mute)">Copy the ✅ boxes — those are the click-drivers this winner used.
+      ${!hasNumber?'Consider adding a number (Top 5 / 7 ways / in 10 minutes) — it usually lifts CTR.':''}</p></div>
+    <div class="fsec"><h4>Length to match</h4><p><b>${fmtDur(v.duration)}</b> — ${dur.label}. ${dur.tip}</p></div>
+    ${v.tags&&v.tags.length?`<div class="fsec"><h4>Tags / keywords it targets</h4>
+      <div>${v.tags.map(t=>`<span class="ftag">${esc(t)}</span>`).join('')}</div>
+      <p style="color:var(--mute);margin-top:8px">Reuse the relevant ones in your description &amp; tags.</p></div>`:''}
+    <div class="fsec"><h4>Thumbnail cues to study</h4>
+      <p>Note: <b>face vs none</b>, big-text word count (1–4 words), colour contrast, and what object/subject it shows.
+      Recreate the <i>structure</i>, never the actual image.</p></div>
+    <div class="fsec" style="border-bottom:1px solid var(--line)"><h4>Your next video, from this winner</h4>
+      <p>1. Pick your angle in the same lane.<br>2. Use a steal-it template above.<br>3. Match the length (${dur.label}).<br>4. Rebuild the thumbnail structure.<br>5. Open the hook the same way (${forms[0].name.toLowerCase()}).</p></div>`;
+  $('fmtModal').classList.add('open');
+}
+
+/* ---------- pattern spotter ---------- */
+function drawPatterns(){
+  const rows = currentRows();
+  if(!rows.length){ $('pwords').innerHTML='<span class="pnote">Run a scan first.</span>'; $('pnote').textContent=''; return; }
+  const freq={}; let hasNumber=0, hasColon=0, total=rows.length;
+  rows.forEach(v=>{
+    if(/\d/.test(v.title)) hasNumber++;
+    if(/[:|\-–—]/.test(v.title)) hasColon++;
+    [...new Set(v.title.toLowerCase().replace(/[^a-z0-9\s]/g,' ').split(/\s+/).filter(w=>w.length>3 && !STOPWORDS.has(w)))].forEach(w=> freq[w]=(freq[w]||0)+1);
+  });
+  const top = Object.entries(freq).sort((a,b)=>b[1]-a[1]).slice(0,18);
+  $('pwords').innerHTML = top.map(([w,c])=>`<span class="pword" data-k="${w}">${w} <b>×${c}</b></span>`).join('');
+  document.querySelectorAll('#pwords .pword').forEach(el=>{ el.onclick=()=>{ $('q').value=el.dataset.k; runScan(el.dataset.k); }; });
+  $('pnote').innerHTML = `Across these <b>${total}</b> winners: <b>${Math.round(hasNumber/total*100)}%</b> use a number, `+
+    `<b>${Math.round(hasColon/total*100)}%</b> use a colon/dash hook. Click any word to scan that angle.`;
+}
+
+/* ============================================================
+   WINNING BLUEPRINT + VIDEO IDEAS (any niche)
+   ============================================================ */
+function topWords(rows, n){
+  const freq={};
+  rows.forEach(v=>{ [...new Set(v.title.toLowerCase().replace(/[^a-z0-9\s]/g,' ').split(/\s+/).filter(w=>w.length>3 && !STOPWORDS.has(w)))].forEach(w=> freq[w]=(freq[w]||0)+1); });
+  return Object.entries(freq).sort((a,b)=>b[1]-a[1]).slice(0,n).map(x=>x[0]);
+}
+function dominantFormula(rows){
+  const tally={};
+  rows.forEach(v=> titleFormula(v.title).forEach(f=>{ tally[f.name]=(tally[f.name]||0)+1; }));
+  const top = Object.entries(tally).sort((a,b)=>b[1]-a[1])[0];
+  return top? top[0] : 'The X that Y curiosity gap';
+}
+function median(arr){ if(!arr.length) return 0; const s=[...arr].sort((a,b)=>a-b); const m=Math.floor(s.length/2); return s.length%2? s[m] : Math.round((s[m-1]+s[m])/2); }
+function cap(s){ return (s||'').charAt(0).toUpperCase()+(s||'').slice(1); }
+function generateIdeas(rows){
+  const words = topWords(rows, 8);
+  const w=(i)=> words[i] || ['topic','trick','method','tips','results','guide','story','truth'][i%8];
+  const num = median(rows.map(v=>{ const m=v.title.match(/\b(\d{1,3})\b/); return m?+m[1]:0; }).filter(Boolean)) || 7;
+  const raw = [
+    `The ${cap(w(0))} ${cap(w(1))} Nobody Talks About`,
+    `${num} ${cap(w(2))} ${cap(w(0))} Tricks That Actually Work`,
+    `How to ${cap(w(3))} ${cap(w(0))} in ${num} Minutes`,
+    `Why Everyone Is Wrong About ${cap(w(0))}`,
+    `The Truth About ${cap(w(0))} (${cap(w(4))} Explained)`,
+    `${num} ${cap(w(0))} Mistakes Everyone Makes`,
+    `${cap(w(0))} vs ${cap(w(1))}: Which Actually Wins?`,
+    `The Rise of ${cap(w(0))} — ${cap(w(2))} Explained`,
+    `What Nobody Tells You About ${cap(w(0))}`,
+    `${cap(w(0))} ${cap(w(3))}: The Complete Beginner Guide`
+  ];
+  const proven = new Set(words);
+  return raw.map(t=>{
+    const hits = t.toLowerCase().split(/\s+/).filter(x=>proven.has(x.replace(/[^a-z]/g,''))).length;
+    return {title:t, score:hits};
+  }).sort((a,b)=>b.score-a.score);
+}
+function bestTiming(rows){
+  const DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat']; const dc={}, hc={};
+  rows.forEach(v=>{ const d=new Date(v.published); dc[d.getDay()]=(dc[d.getDay()]||0)+1; hc[d.getHours()]=(hc[d.getHours()]||0)+1; });
+  const day = Object.entries(dc).sort((a,b)=>b[1]-a[1])[0];
+  const hour= Object.entries(hc).sort((a,b)=>b[1]-a[1])[0];
+  return { day: day? DAYS[+day[0]] : '—', hour: hour? (`${String(hour[0]).padStart(2,'0')}:00 UTC`) : '—' };
+}
+function trendingTopics(rows){
+  const bi={};
+  rows.forEach(v=>{ const ws=v.title.toLowerCase().replace(/[^a-z0-9\s]/g,' ').split(/\s+/).filter(w=>w.length>3 && !STOPWORDS.has(w));
+    for(let i=0;i<ws.length-1;i++){ const p=ws[i]+' '+ws[i+1]; bi[p]=(bi[p]||0)+1; } });
+  return Object.entries(bi).filter(x=>x[1]>1).sort((a,b)=>b[1]-a[1]).slice(0,10);
+}
+function scriptSkeleton(topic){
+  return (
+`HOOK (0:00–0:15)  →  "${topic}" — open on the single most surprising fact or claim. No "hey guys," no long intro.
+CONTEXT (0:15–1:00)  →  Set the stage: what it is, why it matters, why now. Promise the payoff.
+MAIN POINTS (1:00–4:30)  →  3–5 punchy sections, each one idea. Add a mini-cliffhanger between them ("but here's where it gets interesting…").
+THE PAYOFF / TWIST (4:30–6:00)  →  The best insight, result, or reveal. Slow down — this is the retention spike.
+RECAP + CTA (6:00–end)  →  One-line takeaway, then: "If you liked this, the next one will surprise you even more — watch this."`);
+}
+function drawBlueprint(){
+  const rows = currentRows(); const el=$('blueprint');
+  if(!rows.length){ el.innerHTML='<h3>🏆 Winning Blueprint</h3><p class="pnote">Run a scan first — then this builds a full blueprint from the winners.</p>'; return; }
+  const total=rows.length, medLen=median(rows.map(v=>v.duration).filter(Boolean)), medViews=median(rows.map(v=>v.views));
+  const withNum=Math.round(rows.filter(v=>/\d/.test(v.title)).length/total*100), medTitleLen=median(rows.map(v=>v.title.length));
+  const formula=dominantFormula(rows), timing=bestTiming(rows), topics=trendingTopics(rows);
+  const ideas=generateIdeas(rows), topWordList=topWords(rows,10), bucket=durationBucket(medLen);
+  const facelessShare=Math.round(rows.filter(v=>v.facelessStrong).length/total*100);
+  el.innerHTML = `
+    <h3>🏆 Winning Blueprint — built from ${total} current winners</h3>
+    <div class="bp-grid">
+      <div class="bp-card"><div class="k">Best title formula</div><div class="val" style="font-size:14px">${formula}</div></div>
+      <div class="bp-card"><div class="k">Ideal length</div><div class="val"><b>${fmtDur(medLen)}</b></div><div class="bp-sub">${bucket.label}</div></div>
+      <div class="bp-card"><div class="k">Use a number?</div><div class="val"><b>${withNum}%</b> do</div><div class="bp-sub">${withNum>=50?'Yes — add one':'Optional'}</div></div>
+      <div class="bp-card"><div class="k">Title length</div><div class="val"><b>${medTitleLen}</b> chars</div><div class="bp-sub">keep ≤60</div></div>
+      <div class="bp-card"><div class="k">Best day to post</div><div class="val" style="font-size:15px"><b>${timing.day}</b></div><div class="bp-sub">~${timing.hour}</div></div>
+      <div class="bp-card"><div class="k">Faceless share</div><div class="val"><b>${facelessShare}%</b></div><div class="bp-sub">of these winners</div></div>
+      <div class="bp-card"><div class="k">Typical winner</div><div class="val"><b>${fmt(medViews)}</b></div><div class="bp-sub">median views</div></div>
+    </div>
+    <div style="border-top:1px solid var(--line);margin-top:14px;padding-top:14px">
+      <h3 style="color:var(--red)">💡 Video ideas that fit what's working right now</h3>
+      <div class="pnote" style="margin:0 0 10px">Built by blending the proven title formula with the exact hot words from these winners. Ideas reusing more proven words are first. Tweak to your channel.</div>
+      <div>${ideas.map(i=>`<div class="idea"><div><div class="it">${esc(i.title)}</div>
+        <div class="iw">${i.score>0? '♻ reuses '+i.score+' proven word'+(i.score>1?'s':'') : 'fresh angle'}</div></div>
+        <button onclick="navigator.clipboard&&navigator.clipboard.writeText(this.dataset.c);this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1200)" data-c="${esc(i.title)}">Copy</button></div>`).join('')}</div>
+      <div class="bp-actions">
+        <button class="ghost small" id="bpCopyAll">⬇ Copy all 10 ideas</button>
+        <button class="ghost small" id="bpScript">📝 Script skeleton for idea #1</button>
+      </div>
+      <div id="bpScriptBox"></div>
+    </div>
+    ${topics.length?`<div style="border-top:1px solid var(--line);margin-top:14px;padding-top:14px">
+      <h3>🔥 Trending subjects (repeating across winners)</h3>
+      <div class="pwords">${topics.map(([p,c])=>`<span class="pword" data-k="${esc(p)}">${esc(p)} <b>×${c}</b></span>`).join('')}</div>
+      <div class="pnote" style="margin-top:8px">2-word subjects showing up in multiple winners — the audience wants more. Click to scan one.</div></div>`:''}
+    <div style="border-top:1px solid var(--line);margin-top:14px;padding-top:14px">
+      <h3>🧲 Power-words to put in your titles</h3>
+      <div class="pwords">${topWordList.map(w=>`<span class="pword" data-k="${esc(w)}">${esc(w)}</span>`).join('')}</div></div>`;
+  el.querySelectorAll('.pword').forEach(elm=>{ elm.onclick=()=>{ $('q').value=elm.dataset.k; runScan(elm.dataset.k); }; });
+  $('bpCopyAll').onclick=()=>{ const txt=ideas.map((i,n)=>`${n+1}. ${i.title}`).join('\n'); if(navigator.clipboard) navigator.clipboard.writeText(txt);
+    $('bpCopyAll').textContent='Copied all!'; setTimeout(()=>$('bpCopyAll').textContent='⬇ Copy all 10 ideas',1400); };
+  $('bpScript').onclick=()=>{ $('bpScriptBox').innerHTML=`<div class="skeleton">${esc(scriptSkeleton(ideas[0].title))}</div>`+
+      `<div class="bp-actions"><button class="ghost small" id="bpScriptCopy">Copy script skeleton</button></div>`;
+    $('bpScriptCopy').onclick=()=>{ if(navigator.clipboard) navigator.clipboard.writeText(scriptSkeleton(ideas[0].title));
+      $('bpScriptCopy').textContent='Copied!'; setTimeout(()=>$('bpScriptCopy').textContent='Copy script skeleton',1200); }; };
+}
+
+/* ---------- thumbnail wall ---------- */
+function drawThumbWall(){
+  const rows = currentRows().sort((a,b)=>b.mult-a.mult); const el=$('thumbwall');
+  if(!rows.length){ el.innerHTML='<h3>🖼️ Thumbnail wall</h3><p class="pnote">Run a scan first.</p>'; return; }
+  el.innerHTML = `<h3>🖼️ Thumbnail wall — study the visual pattern</h3>
+    <div class="pnote" style="margin-bottom:6px">All winning thumbnails side by side. Look for the shared recipe: faces vs none, big-text word count, colour, and what subject they show. Recreate the structure — never the image.</div>
+    <div class="twall">${rows.map(v=>`<a href="https://youtube.com/watch?v=${v.id}" target="_blank" title="${esc(v.title)}">
+      <img src="${v.thumb}" alt="" loading="lazy"/><div class="cap">${v.mult}× · ${fmt(v.views)}</div></a>`).join('')}</div>`;
+}
+
+/* ---------- history ---------- */
+function drawHistory(){
+  const el=$('history');
+  if(!HIST.length){ el.innerHTML='<h3>🕘 History</h3><p class="pnote">Your recent scans will appear here so you can track a niche over time.</p>'; return; }
+  el.innerHTML = `<h3>🕘 Recent scans — click to re-run</h3>
+    <div class="hist">${HIST.map(h=>{ const mins=Math.round((Date.now()-h.t)/60000); const ago=mins<60?mins+'m ago':Math.round(mins/60)+'h ago';
+      return `<span class="hchip" data-k="${esc(h.q)}">${esc(h.q)}<small>${ago}</small></span>`; }).join('')}
+    <span class="hchip" id="histClear" style="border-color:var(--red);color:var(--red)">clear all ✕</span></div>`;
+  el.querySelectorAll('.hchip[data-k]').forEach(c=>{ c.onclick=()=>{ const q=c.dataset.k;
+    if(NICHES[q]!==undefined){ activeNiche=q; renderNiches(); renderChips(); $('q').value=''; runScan(''); }
+    else { $('q').value=q; runScan(q); } }; });
+  $('histClear').onclick=()=>{ HIST=[]; localStorage.removeItem('vr_hist'); drawHistory(); };
+}
+
+/* ---------- CSV export ---------- */
+function exportCsv(){
+  const rows = currentRows();
+  if(!rows.length){ alert('Nothing to export — run a scan or open your shortlist first.'); return; }
+  const head=['Title','Channel','Subs','Views','Channel avg','Outlier x','Views/day','Days old','Likes','Comments','Engagement %','Faceless','Est $','URL'];
+  const csv=[head.join(',')].concat(rows.map(v=>[
+    '"'+(v.title||'').replace(/"/g,'""')+'"','"'+(v.channel||'').replace(/"/g,'""')+'"',
+    v.subs, v.views, v.avg, v.mult, v.vpd, v.days, v.likes, v.comments||0, v.eng, v.facelessStrong?'yes':'no', v.earn,
+    'https://youtube.com/watch?v='+v.id
+  ].join(','))).join('\n');
+  const blob=new Blob([csv],{type:'text/csv'}); const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob); a.download=(showSaved?'viral-radar-shortlist':'viral-radar-results')+'.csv'; a.click();
 }
 
 $('disclaimer').innerHTML =
   '<b>How the outlier score works:</b> a video’s views ÷ that channel’s average views per video. '+
   'A 5× means it got 5 times the channel’s normal — a strong sign of real demand you could replicate. '+
-  '<b>Views/day</b> shows momentum (fast climbers). <b>Est. $ is a rough guess</b> '+
-  '(views ÷ 1000 × your RPM), not real earnings. All figures come from the official public YouTube Data API. '+
-  'Your API key stays in this browser only. Tip: each Google Cloud project has its own free 10k units/day.';
+  '<b>Views/day</b> shows momentum. <b>Engagement %</b> = (likes + comments) ÷ views. '+
+  '<b>Faceless</b> is an educated guess from the title/description (YouTube can’t tell us if a face is on screen). '+
+  '<b>Est. $ is a rough guess</b> (views ÷ 1000 × your RPM), not real earnings. '+
+  'All figures come from the official public YouTube Data API. Your key(s) stay in this browser only.';
 
 function DEMO_DATA(){
   const mk=(title,channel,subs,views,avg,days,id)=>({
-    id,title,channel,subs,views,avg,mult:+(views/avg).toFixed(1),
+    id,title,channel,channelId:'ch_'+id,subs,views,avg,mult:+(views/avg).toFixed(1),
     desc:'', likes:Math.round(views*0.04), comments:Math.round(views*0.006),
+    duration:600+Math.round(views%900), tags:['viral','tutorial','explained','how to'],
     thumb:'data:image/svg+xml;utf8,'+encodeURIComponent(
       `<svg xmlns="http://www.w3.org/2000/svg" width="320" height="180"><rect width="320" height="180" fill="#1b2027"/><rect x="8" y="8" width="304" height="164" fill="none" stroke="#e0322e" stroke-width="2" rx="6"/><text x="160" y="96" fill="#9aa6b2" font-family="monospace" font-size="14" text-anchor="middle">VIRAL RADAR · DEMO</text></svg>`),
-    published:new Date(Date.now()-days*864e5).toISOString()
+    published:new Date(Date.now()-days*864e5).toISOString(), seedFaceless:true
   });
   return [
     mk("Top 10 Space Facts That Will Blow Your Mind","Cosmic Files",8200,940000,61000,3,"demo1"),
